@@ -1,19 +1,35 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <title>Rango</title>
+    </head>
 
-{% load staticfiles %}
+    <body>
+        <h1>Rango says..hello world!</h1>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rango</title>
-    <link rel="stylesheet" href="{% static "css/base.css" %}" /> <!-- CSS -->
-    <script src="{% static "js/jquery.js" %}"></script> <!-- JavaScript -->
-</head>
-<body>
-  <h1>Rango says...</h1>
-        hello world! <strong>{{boldmessage}}</strong><br />
-        <strong>{{random_template}}</strong>
-        <a href="/rango/about/">About</a><br />
-        <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-</body>
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <!-- Following line changed to add an HTML hyperlink -->
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+       {% else %}
+            <strong>There are no categories present.</strong>
+       {% endif %}
+
+        <h2>Our top 5 pages are:</h2>
+
+        {% if pages %}
+             <ul>
+                {% for page in pages %}
+                <!-- Following line changed to add an HTML hyperlink -->
+                <li>{{ page.title }}</li>
+                {% endfor %}
+            </ul>
+       {% else %}
+            <strong>There are no pages present.</strong>
+       {% endif %}
+
+    </body>
 </html>
