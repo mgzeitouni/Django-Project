@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}" /> <!-- CSS -->
+    <script src="{% static "js/jquery.js" %}"></script> <!-- JavaScript -->
+</head>
+<body>
+  <h1>Morris says</h1>
+        hello world! <strong>{{random_template}}</strong><br />
+        <a href="/rango/about/">About</a><br />
+        <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+</body>
+</html>
