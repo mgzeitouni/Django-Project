@@ -49,7 +49,8 @@ INSTALLED_APPS = (
 'django.contrib.messages',
 'django.contrib.staticfiles',
 'rango',
-'registration', # add in the registration package
+'registration',
+'bootstrap_toolkit',
 )
 
 REGISTRATION_OPEN = True                # If True, users can register
