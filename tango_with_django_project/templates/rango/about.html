@@ -1,16 +1,11 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-{% load staticfiles%}
+{% block title %} About Me {% endblock %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About Me</title>
-</head>
-<body>
+{% block body_block %}
     <h1> My template is: {{about_message}}</h1>
 
     <img src="{% static "images/aboutMe.jpg" %}" alt="Picture of Rango" />
 
-</body>
-</html>
+{%endblock%}
