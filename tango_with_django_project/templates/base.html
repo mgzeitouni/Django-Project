@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load rango_extras %}
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,6 +24,8 @@
 
   <body>
 
+
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -34,7 +39,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+
                 <li><a href="{% url 'index' %}">Home</a></li>
+
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
                         <li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
@@ -52,10 +59,14 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-                {% block side_block %}{% endblock %}
+       <div class="col-sm-3 col-md-2 sidebar">
+             <a href="{% url 'search' %}">Find a Category</a>
 
-        </div>
+        {% block side_block %}
+        {% get_category_list category %}
+        {% endblock %}
+
+    </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
            <div>
                 {% block body_block %}{% endblock %}
