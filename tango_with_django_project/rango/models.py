@@ -1,6 +1,9 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+import datetime
+from django.utils.timezone import utc
+
 
 
 # Create your models here.
@@ -10,7 +13,10 @@ class Category(models.Model):
     likes = models.IntegerField(default = 0)
     slug = models.SlugField(unique=True)
 
+
     def save(self, *args, **kwargs):
+        if self.views < 0:
+            self.views = 0
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
 
@@ -23,6 +29,8 @@ class Page(models.Model):
     title = models.CharField(max_length=128)
     url = models.URLField()
     views = models.IntegerField(default=0)
+    first_visit = models.TimeField(default =datetime.datetime.now())
+    last_visit = models.TimeField(default = datetime.datetime.now())
 
     def __str__(self):      #For Python 2, use __str__ on Python 3
         return self.title
